@@ -20,8 +20,16 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+  # Enable networking with wpa
+  # networking.networkmanager.enable = true;
+  # Enable networking with iwd
+  networking = {
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd";
+    };
+  };
+
   
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
@@ -106,6 +114,7 @@
     countryfetch
   # KDE apps
   	kdePackages.bluedevil
+  	kdePackages.bluez-qt
   	kdePackages.sddm-kcm
   	kdePackages.kdeconnect-kde
     kdePackages.kcalc
@@ -121,10 +130,12 @@
     kdePackages.kontact
     kdePackages.korganizer
     kdePackages.kwallet
+    kdePackages.isoimagewriter
   # Themes
 	qogir-kde
 	qogir-icon-theme
 	inter
+	inter-nerdfont
   # Browsing
     librewolf
     yt-dlp
@@ -140,8 +151,9 @@
     bottles
     protonplus
     prismlauncher
-  # Virt-Manager
+  # Dependencies
   	dnsmasq
+  	bluez
   	
   ];
 
